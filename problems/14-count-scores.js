@@ -28,8 +28,18 @@ console.log(countScores(peeps)); //=> { Anthony: 4, Fred: 4, Winnie: 6 }
 ***********************************************************************/
 
 function countScores(people) {
-  // Your code here
+  let obj = {};                                                   // define an object to hold total scores of each player
+  for(ele of people){                                             // iterate through people array
+    let valueArr = Object.values(ele);                            // store both values of 'ele' object into their own array
+    let player = valueArr[0];                                     // let 'player' equal the first value of valueArr
+    let score  = valueArr[1];                                     // let 'score equal the second value of valueArr
+
+    !obj[player] ? obj[player] = score : obj[player] += score;    // if there is a value at index 'player', add score to existing element. If not, add element and score
+  }
+  return obj; // return all totalScores
 }
+
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 module.exports = countScores;
